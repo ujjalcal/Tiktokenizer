@@ -37,6 +37,15 @@
             font-size: 1em;
             white-space: pre-wrap;
         }
+        .input-text {
+            color: blue;
+        }
+        .tokens {
+            color: green;
+        }
+        .decoded-tokens {
+            color: red;
+        }
         button {
             margin-top: 10px;
             padding: 10px 20px;
@@ -47,7 +56,7 @@
 <body>
     <header>TikTokenizer</header>
     <div class="container">
-        <textarea id="textInput" placeholder="Enter text to tokenize"></textarea>
+        <textarea id="textInput" class="input-text" placeholder="Enter text to tokenize"></textarea>
         <div id="result"></div>
     </div>
     <button id="tokenizeButton">Tokenize</button>
@@ -68,9 +77,9 @@
             const data = await response.json();
             console.log('Data:', data);
             if (Array.isArray(data.tokens) && Array.isArray(data.decodedTokens)) {
-                const tokensText = `Tokens: ${data.tokens.join(', ')}`;
-                const decodedTokensText = `Decoded Tokens: ${data.decodedTokens.join(', ')}`;
-                document.getElementById('result').textContent = `${tokensText}\n${decodedTokensText}`;
+                const tokensText = `<span class="tokens">Tokens: ${data.tokens.join(', ')}</span>`;
+                const decodedTokensText = `<span class="decoded-tokens">Decoded Tokens: ${data.decodedTokens.join(', ')}</span>`;
+                document.getElementById('result').innerHTML = `${tokensText}<br>${decodedTokensText}`;
             } else {
                 console.error('Invalid response format:', data);
                 document.getElementById('result').textContent = 'Error: Invalid response format';
