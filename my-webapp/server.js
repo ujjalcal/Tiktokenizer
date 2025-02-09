@@ -1,7 +1,7 @@
 const express = require('express');
 const bodyParser = require('body-parser');
 const path = require('path');
-const { tokenizeText } = require('./src/tokenizer');
+const { tokenizeText, decodeToken } = require('./src/tokenizer');
 const app = express();
 const PORT = process.env.PORT || 3000;
 
@@ -10,7 +10,7 @@ app.use(express.static('src'));
 
 // Serve the index.html file for the root URL
 app.get('/', (req, res) => {
-    res.sendFile(path.join(__dirname, 'index.html'));
+    res.sendFile(path.join(__dirname, 'src', 'index.html'));
 });
 
 app.post('/tokenize', (req, res) => {
@@ -19,7 +19,8 @@ app.post('/tokenize', (req, res) => {
         return res.status(400).send('Text is required');
     }
     const tokens = tokenizeText(text);
-    res.json({ tokens });
+    const decodedTokens = tokens.map(token => decodeToken(token));
+    res.json({ tokens, decodedTokens });
 });
 
 app.listen(PORT, () => {

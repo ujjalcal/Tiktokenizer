@@ -26,9 +26,12 @@
             console.log('Response received');
             const data = await response.json();
             console.log('Data:', data);
-            if (Array.isArray(data.tokens)) {
-                document.getElementById('result').textContent = `Tokens: ${data.tokens.join(', ')}`;
+            if (Array.isArray(data.tokens) && Array.isArray(data.decodedTokens)) {
+                const tokensText = `Tokens: ${data.tokens.join(', ')}`;
+                const decodedTokensText = `Decoded Tokens: ${data.decodedTokens.join(', ')}`;
+                document.getElementById('result').textContent = `${tokensText}\n${decodedTokensText}`;
             } else {
+                console.error('Invalid response format:', data);
                 document.getElementById('result').textContent = 'Error: Invalid response format';
             }
         });
