@@ -36,19 +36,19 @@ print(tokens)
 
 ## Documentation
 
-For detailed documentation and API reference, please visit the [official documentation](https://example.com/tiktokenizer-docs).
+
 
 ## Contributing
 
-We welcome contributions to Tiktokenizer! Please read our [contributing guidelines](CONTRIBUTING.md) to get started.
+We welcome contributions to Tiktokenizer! 
 
 ## License
 
-This project is licensed under the MIT License. See the [LICENSE](LICENSE) file for more details.
+This project is licensed under the MIT License. 
 
 ## Contact
 
-If you have any questions or feedback, feel free to reach out to us at [support@example.com](mailto:support@example.com).
+
 ## Deployment
 
 Tiktokenizer is deployed using Vercel, a platform for frontend frameworks and static sites. Vercel provides seamless deployment and hosting for our documentation and demo applications.
