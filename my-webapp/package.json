@@ -18,6 +18,7 @@
     "webpack-dev-server": "^3.0.0"
   },
   "dependencies": {
-    "express": "^4.21.2"
+    "express": "^4.21.2",
+    "tiktoken": "^1.0.20"
   }
 }

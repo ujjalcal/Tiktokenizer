@@ -1,20 +1,25 @@
-// filepath: server.js
 const express = require('express');
 const bodyParser = require('body-parser');
-const { tokenize_text } = require('./tokenizer'); // Assuming tokenizer.js contains the tokenize_text function
-
 const app = express();
-const PORT = 3000;
+const PORT = process.env.PORT || 3000;
 
 app.use(bodyParser.json());
 app.use(express.static('src'));
 
+// Define a route for the root URL
+app.get('/', (req, res) => {
+    res.send('Hello, world!');
+});
+
 app.post('/tokenize', (req, res) => {
     const { text } = req.body;
-    const tokens = tokenize_text(text);
-    res.json({ tokens });
+    if (!text) {
+        return res.status(400).send('Text is required');
+    }
+    // Tokenization logic here
+    res.send(`Tokenized text: ${text}`);
 });
 
 app.listen(PORT, () => {
-    console.log(`Server is running on http://localhost:${PORT}`);
+    console.log(`Server is running on port ${PORT}`);
 });
