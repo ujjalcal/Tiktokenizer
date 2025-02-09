@@ -13,7 +13,9 @@
 
     <script>
         document.getElementById('tokenizeButton').addEventListener('click', async () => {
+            console.log('Button clicked');
             const text = document.getElementById('textInput').value;
+            console.log('Text input:', text);
             const response = await fetch('/tokenize', {
                 method: 'POST',
                 headers: {
@@ -21,8 +23,14 @@
                 },
                 body: JSON.stringify({ text }),
             });
+            console.log('Response received');
             const data = await response.json();
-            document.getElementById('result').textContent = `Tokens: ${data.tokens.join(', ')}`;
+            console.log('Data:', data);
+            if (Array.isArray(data.tokens)) {
+                document.getElementById('result').textContent = `Tokens: ${data.tokens.join(', ')}`;
+            } else {
+                document.getElementById('result').textContent = 'Error: Invalid response format';
+            }
         });
     </script>
 </body>
