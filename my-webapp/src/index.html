@@ -3,13 +3,54 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Tokenize Text</title>
+    <title>TikTokenizer</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            margin: 0;
+            padding: 20px;
+        }
+        header {
+            font-size: 2em;
+            margin-bottom: 20px;
+        }
+        .container {
+            display: flex;
+            width: 100%;
+            max-width: 800px;
+        }
+        textarea {
+            width: 100%;
+            height: 150px;
+            margin-right: 20px;
+            padding: 10px;
+            font-size: 1em;
+        }
+        #result {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ccc;
+            background-color: #f9f9f9;
+            font-size: 1em;
+            white-space: pre-wrap;
+        }
+        button {
+            margin-top: 10px;
+            padding: 10px 20px;
+            font-size: 1em;
+        }
+    </style>
 </head>
 <body>
-    <h1>Tokenize Text</h1>
-    <input type="text" id="textInput" placeholder="Enter text to tokenize">
+    <header>TikTokenizer</header>
+    <div class="container">
+        <textarea id="textInput" placeholder="Enter text to tokenize"></textarea>
+        <div id="result"></div>
+    </div>
     <button id="tokenizeButton">Tokenize</button>
-    <div id="result"></div>
 
     <script>
         document.getElementById('tokenizeButton').addEventListener('click', async () => {
