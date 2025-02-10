@@ -46,6 +46,9 @@
         .decoded-tokens {
             color: red;
         }
+        .token-count {
+            color: purple;
+        }
         button {
             margin-top: 10px;
             padding: 10px 20px;
@@ -79,7 +82,8 @@
             if (Array.isArray(data.tokens) && Array.isArray(data.decodedTokens)) {
                 const tokensText = `<span class="tokens">Tokens: ${data.tokens.join(', ')}</span>`;
                 const decodedTokensText = `<span class="decoded-tokens">Decoded Tokens: ${data.decodedTokens.join(', ')}</span>`;
-                document.getElementById('result').innerHTML = `${tokensText}<br>${decodedTokensText}`;
+                const tokenCountText = `<span class="token-count">Token Count: ${data.tokenCount}</span>`;
+                document.getElementById('result').innerHTML = `${tokensText}<br>${decodedTokensText}<br>${tokenCountText}`;
             } else {
                 console.error('Invalid response format:', data);
                 document.getElementById('result').textContent = 'Error: Invalid response format';

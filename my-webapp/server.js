@@ -20,7 +20,8 @@ app.post('/tokenize', (req, res) => {
     }
     const tokens = tokenizeText(text);
     const decodedTokens = tokens.map(token => decodeToken(token));
-    res.json({ tokens, decodedTokens });
+    const tokenCount = tokens.length;
+    res.json({ tokens, decodedTokens, tokenCount });
 });
 
 app.listen(PORT, () => {
